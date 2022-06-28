@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Dashboard</title>
+</head>
+<body>
+<div class="container mx-auto">
+    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+        <div class="col-sm-4 col-md-4">
+            <!-- Brand -->
+            <a class="navbar-brand" href="/recipes">SkillsDonor!</a>
+        
+            <!-- Links -->
+        </div>
+    <div class="col">
+        <ul class="navbar-nav float-sm-right">
+            <li class="nav-item">
+                <a class="nav-link" href="#"> Welcome {{ user.first_name }}!</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/skills/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Log Off</a>
+            </li>
+        
+        </ul>
+    </div>
+    </nav>
+    <h3>Skills</h3>
+    {% for skill in skills %}
+    
+    <div class="container-fluid">
+        <h6>Skills name:{{ skill.skill_name }} for {{ skill.duration }} hour/s only.<br><a href="/skills/{{ skill.id }}">Info</a>  </h6>
+            <p action=>{{ skill.user.first_name }} {{ skill.user.last_name }} added this skill.</p>
+        <span><a href="/add-like/{{ skill.id }}">LIKE</a></span>
+        <span>{{ skill.likes.count }}</span>
+        {% if request.session.user_id == skill.user.id %}
+        <span><a href="/skills/{{ skill.id }}/edit">Edit | </a></span>
+        <span><a href="/skills/{{ skill.id }}/destroy">Delete</a></span>
+        {% endif %}  
+    
+    
+    </div>
+    {% endfor %}
+    <div class="container-fluid text-center text-light m-2" style= "background-color:rgb(195 195 195);">You have reached the end of this page</div>
+</div>
+</body>
+</html>
