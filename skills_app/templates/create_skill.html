@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Donor</title>
+</head>
+<body>
+    <div class="container mx-auto">
+        <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+        <div class="col">
+            <ul class="navbar-nav float-sm-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Log Off</a>
+                </li>
+            
+            </ul>
+        </div>
+        </nav>
+    <h1>Donate a skill to help those in need!</h1>
+    {%csrf_token%}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}> {{ message }}</li>
+        {% endfor %}
+    </ul>
+    <h1>Skill</h1>
+    <form action="/create" method="POST">
+    {%csrf_token%}
+        <label for="location">Location</label>
+        <input type="text" name="location">
+        <label for="skill">Skill</label>
+        <input type="text" name="skill">
+        <label for="profession">Profession</label>
+        <input type="text" name="skill">
+        <label for="time">Time</label>
+        <input type="text" name="time">
+        <button>Donate</button>
+    </form>
+</body>
+</html>

@@ -23,7 +23,7 @@
                 <a class="nav-link" href="#"> Welcome {{ user.first_name }}!</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/skills/dashboard">Dashboard</a>
+                <a class="nav-link" href="/dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/logout">Log Off</a>
@@ -33,6 +33,7 @@
     </div>
     </nav>
     <h3>Skills</h3>
+    <a href="/skill_form">Donate A Skill</a>
     {% for skill in skills %}
     
     <div class="container-fluid">

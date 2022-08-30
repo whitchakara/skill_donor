@@ -32,6 +32,9 @@ def login(request):
             request.session['greeting'] = user.first_name
             return redirect('/dashboard')
     return redirect("/dashboard")
+
+def logpage(request):
+    return render(request, "login.html")
     
 def logout(request):
     request.session.flush()
@@ -50,3 +53,6 @@ def dashboard(request):
         #'user_jobs': Job.objects.filter(jobs = user)
     }
     return render(request, "dashboard.html",context)
+
+def skill_form(request):
+    return render(request,"create_skill.html")
