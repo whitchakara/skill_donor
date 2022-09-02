@@ -9,7 +9,7 @@ urlpatterns = [
     path('logpage', views.logpage),
     path('skill_form', views.skill_form),
     # path('skill/<int:skill_id>', views.one_skill),
-    # path('create',views.create),
+    path('create',views.create),
     # path('update/<int:skill_id>', views.update),
     # path('delete/<int:skill_id>', views.delete),
     # path('user/<int:id>', views.profile),

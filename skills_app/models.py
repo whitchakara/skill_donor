@@ -32,10 +32,22 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now= True)
     objects = UserManager()
 
-    def __repr__(self):
-        return f"<User object: {self.name} ({self.id})>"
+    # def __repr__(self):
+    #     return f"<User object: {self.name} ({self.id})>"
 
 
+class SkillManger(models.Manager):
+    def skill_validator(self,postData):
+        errors = {}
+        if len(postData["location"]) < 5:
+            errors["location"] = "  location must be at least 5 characters"
+        if len(postData['skill']) <10:
+            errors['skill'] = " location must be at least 10 characters"
+        if len(postData['profession']) <3:
+            errors['profession'] = " profession must be at least 3 characters"
+        if len(postData['time']) < 5: 
+            errors['time']= "please enter a time you would like to donate a skill"
+        return errors  
 
 class Skill(models.Model):
     posted_by = models.ForeignKey(User, related_name = "user_skills", on_delete=models.CASCADE, null=True, blank = True)

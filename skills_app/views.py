@@ -2,7 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 import bcrypt 
-from .models import User, Skill
+from .models import User, Skill, UserManager, SkillManger
 
 # Create your views here.
 def index(request):
@@ -56,3 +56,22 @@ def dashboard(request):
 
 def skill_form(request):
     return render(request,"create_skill.html")
+
+def create(request):
+    errors = Skill.objects.skill_validator(request.POST)
+
+    if len(errors) > 0  :
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/skill_form')
+    else :
+        user = User.objects.get(id = request.session['user_id'])
+        skill = Skill.objects.create(
+            location = request.POST['location'], 
+            skill = request.POST['skill'], 
+            profession = request.POST['profession'] ,
+            time= request.POST['time'],
+            posted_by = user
+            )
+            
+        return redirect("/dashboard")
