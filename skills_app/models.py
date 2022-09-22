@@ -36,7 +36,7 @@ class User(models.Model):
     #     return f"<User object: {self.name} ({self.id})>"
 
 
-class SkillManger(models.Manager):
+class SkillManager(models.Manager):
     def skill_validator(self,postData):
         errors = {}
         if len(postData["location"]) < 5:

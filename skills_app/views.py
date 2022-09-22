@@ -2,7 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 import bcrypt 
-from .models import User, Skill, UserManager, SkillManger
+from .models import User, Skill, UserManager, SkillManager 
 
 # Create your views here.
 def index(request):
@@ -63,7 +63,7 @@ def create(request):
     if len(errors) > 0  :
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/skill_form')
+        return redirect('/create')
     else :
         user = User.objects.get(id = request.session['user_id'])
         skill = Skill.objects.create(
