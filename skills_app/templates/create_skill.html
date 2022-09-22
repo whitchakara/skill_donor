@@ -29,17 +29,18 @@
         {% endfor %}
     </ul>
     <h1>Skill</h1>
-    <form action="/create" method="POST">
+    <form action="/skills/new" method="POST">
     {%csrf_token%}
         <label for="location">Location</label>
         <input type="text" name="location">
         <label for="skill">Skill</label>
         <input type="text" name="skill">
         <label for="profession">Profession</label>
-        <input type="text" name="skill">
+        <input type="text" name="profession">
         <label for="time">Time</label>
         <input type="text" name="time">
         <button>Donate</button>
     </form>
+    </div>
 </body>
 </html>

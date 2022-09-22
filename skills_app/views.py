@@ -63,7 +63,7 @@ def create(request):
     if len(errors) > 0  :
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/create')
+        return redirect('/skill_form')
     else :
         user = User.objects.get(id = request.session['user_id'])
         skill = Skill.objects.create(
