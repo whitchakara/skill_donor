@@ -1,6 +1,7 @@
 from django.db import models
 import re
 import bcrypt 
+from django.db.models.fields.related import ForeignKey
 # Create your models here.
 class UserManager(models.Manager):
     def basic_validator(self, postData):
@@ -36,13 +37,13 @@ class User(models.Model):
     #     return f"<User object: {self.name} ({self.id})>"
 
 
-class SkillManger(models.Manager):
+class SkillManager(models.Manager):
     def skill_validator(self,postData):
         errors = {}
-        if len(postData["location"]) < 5:
-            errors["location"] = "  location must be at least 5 characters"
-        if len(postData['skill']) <10:
-            errors['skill'] = " location must be at least 10 characters"
+        if len(postData['location']) < 5:
+            errors['location'] = "location must be at least 5 characters"
+        if len(postData['skill']) < 4:
+            errors['skill'] = "Skill must be at least 10 characters"
         if len(postData['profession']) <3:
             errors['profession'] = " profession must be at least 3 characters"
         if len(postData['time']) < 5: 
@@ -55,4 +56,5 @@ class Skill(models.Model):
     skill= models.TextField()
     profession= models.CharField(max_length=20)
     time= models.CharField(max_length=10)
+    objects = SkillManager()
     

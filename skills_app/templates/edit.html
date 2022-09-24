@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job</title>
+</head>
+<body>
+    <h1>Hello {{request.session.greeting}} ! Let's edit your job!</h1>
+    <a href="/logout">Logout</a>
+    <form action="/update/{{skill.id}}" method="POST">
+        {%csrf_token%}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}> {{ message }}</li>
+            {% endfor %}
+        </ul>
+        <label for="location">Location</label>
+        <input type="text" name="location" value="{{skill.location}}">
+        <label for="skill">Skill</label>
+        <input type="text" name="skill" value="{{skill.skill}}">
+        <label for="profession">Profession</label>
+        <input type="text" name="profession" value="{{skill.profession}}">
+        <label for="time">Time</label>
+        <input type="text" name="time" value="{{skill.time}}">
+        <a href="/dashboard"> Cancel</a>
+        <button>Submit</button>
+    
+    </form>
+    
+</body>
+</html>
