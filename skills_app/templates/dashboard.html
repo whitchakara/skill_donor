@@ -37,9 +37,9 @@
     {% for skill in skills %}
     
     <div class="container-fluid">
-        <h6>Skills name:{{ skill.skill_name }} for {{ skill.duration }} hour/s only.<br><a href="/skills/{{ skill.id }}">Info</a>  </h6>
-            <p action=>{{ skill.user.first_name }} {{ skill.user.last_name }} added this skill.</p>
-        <span><a href="/add-like/{{ skill.id }}">LIKE</a></span>
+        <h6>Skill's name:{{skill.skill}} for {{skill.time}} hour/s only.<br><a href="/skill/{{skill.id}}">Info</a>  </h6>
+            <p>{{skill.posted_by.first_name}} added this skill.</p>
+        <span><a href="/add-like/{{skill.id }}">LIKE</a></span>
         <span>{{ skill.likes.count }}</span>
         {% if request.session.user_id == skill.user.id %}
         <span><a href="/skills/{{ skill.id }}/edit">Edit | </a></span>
