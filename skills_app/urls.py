@@ -12,6 +12,6 @@ urlpatterns = [
     path('skills/new',views.create),
     path('update/<int:skill_id>', views.update),
     path('delete/<int:skill_id>', views.delete),
-    path('user/<int:id>', views.profile),
+    path('user/<int:user_id>', views.profile),
     path('logout', views.logout),
 ]
