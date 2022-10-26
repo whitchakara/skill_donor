@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=h1, initial-scale=1.0">
-    <title>{{skill.posted_by.first_name}}'s Skills</title>
+    <title>{{skill.first_name}}'s Skills</title>
 </head>
 <body>
     <!-- <h1>Hello ,{{request.session.greeting}}! Skills listed Below!</h1>
@@ -15,11 +15,19 @@
     <p>Posted by: {{skill.posted_by.first_name}}</p>
     <p>Posted on: {{skill.created_at}}</p> -->
     <a href="/dashboard">Dashboard</a> <a href="/logout">logout</a>
-    <h1>Name's Profile</h1>
+    <h1>{{user.first_name}}'s Profile</h1>
     <h2>Bio</h2>
-    <p></p>
-    <h3>Name's Skills</h3>
-    <p></p>
+    <p>{{user.bio}}</p>
+    <h3>{{user.first_name}}'s Skills</h3>
+    <p>
+    {% for skill in user.user_skills.all%}
+        <!-- {{skill.posted_by.first_name}} -->
+        <!-- <p>Location:{{skill.location}}</p> -->
+        <p>Skill:{{skill.skill}}</p>
+        <!-- <p>Profession:{{skill.profession}}</p> -->
+        <p>Time:{{skill.time}}</p>
+    {% endfor %}
+    </p>
     <a href="#">Contact</a>
 </body>
 </html>

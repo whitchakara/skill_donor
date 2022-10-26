@@ -29,6 +29,8 @@ class User(models.Model):
     email = models.CharField(max_length=55)
     password = models.CharField(max_length=20)
     confirmpw = models.CharField(max_length = 20)
+    bio= models.TextField()
+    #$profile_img= models.ImageField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now= True)
     objects = UserManager()
